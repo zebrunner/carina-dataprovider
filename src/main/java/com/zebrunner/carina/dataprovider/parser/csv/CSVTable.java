@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import com.zebrunner.carina.utils.parser.xls.AbstractTable;
 
 public class CSVTable extends AbstractTable {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     public CSVTable() {

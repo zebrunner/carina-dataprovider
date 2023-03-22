@@ -36,6 +36,7 @@ import com.zebrunner.carina.utils.commons.SpecialKeywords;
  * Created by Patotsky on 16.12.2014.
  */
 public class DataProviderFactory {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     private DataProviderFactory() {}

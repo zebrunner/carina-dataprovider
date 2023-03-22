@@ -1,16 +1,21 @@
 package com.zebrunner.carina.dataprovider.parser.csv;
 
-import au.com.bytecode.opencsv.CSVReader;
-import com.zebrunner.carina.dataprovider.parser.DSBean;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.zebrunner.carina.dataprovider.parser.DSBean;
+
+import au.com.bytecode.opencsv.CSVReader;
 
 public class CSVParser {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     public static CSVTable parseCsvFile(DSBean dsBean, char separator, char quote) {

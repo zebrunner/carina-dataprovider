@@ -23,6 +23,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CsvDataSourceParameters {
+
     /**
      * Define data provider instance
      *
@@ -107,7 +108,7 @@ public @interface CsvDataSourceParameters {
     String testMethodColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
@@ -115,7 +116,7 @@ public @interface CsvDataSourceParameters {
     String testRailColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
@@ -123,7 +124,7 @@ public @interface CsvDataSourceParameters {
     String qTestColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
@@ -131,7 +132,7 @@ public @interface CsvDataSourceParameters {
     String testMethodOwnerColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
@@ -139,7 +140,7 @@ public @interface CsvDataSourceParameters {
     String bugColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String[]
      */
