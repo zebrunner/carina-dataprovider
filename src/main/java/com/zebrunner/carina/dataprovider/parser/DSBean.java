@@ -15,23 +15,24 @@
  *******************************************************************************/
 package com.zebrunner.carina.dataprovider.parser;
 
-import com.zebrunner.carina.dataprovider.annotations.CsvDataSourceParameters;
-import com.zebrunner.carina.dataprovider.annotations.XlsDataSourceParameters;
-import com.zebrunner.carina.utils.commons.SpecialKeywords;
-import com.zebrunner.carina.utils.exception.InvalidArgsException;
-import org.testng.ITestContext;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.testng.ITestContext;
+
+import com.zebrunner.carina.dataprovider.annotations.CsvDataSourceParameters;
+import com.zebrunner.carina.dataprovider.annotations.XlsDataSourceParameters;
+import com.zebrunner.carina.utils.commons.SpecialKeywords;
+import com.zebrunner.carina.utils.exception.InvalidArgsException;
+
 public class DSBean {
+
     private Map<String, String> testParams;
     private List<String> args = new ArrayList<>();
     private List<String> uidArgs = new ArrayList<>();
     private List<String> staticArgs = new ArrayList<>();
-
     private String dsFile;
     private String xlsSheet;
     private String executeColumn;

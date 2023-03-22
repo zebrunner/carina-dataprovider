@@ -23,6 +23,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface XlsDataSourceParameters {
+
     /**
      * Define data provider instance
      *
@@ -108,7 +109,7 @@ public @interface XlsDataSourceParameters {
     String testMethodColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
@@ -116,7 +117,7 @@ public @interface XlsDataSourceParameters {
     String testRailColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
@@ -124,7 +125,7 @@ public @interface XlsDataSourceParameters {
     String qTestColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
@@ -132,7 +133,7 @@ public @interface XlsDataSourceParameters {
     String testMethodOwnerColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
@@ -140,7 +141,7 @@ public @interface XlsDataSourceParameters {
     String bugColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */

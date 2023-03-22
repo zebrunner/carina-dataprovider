@@ -1,11 +1,12 @@
 package com.zebrunner.carina.dataprovider;
 
-import com.zebrunner.carina.dataprovider.core.DataProviderFactory;
+import java.lang.annotation.Annotation;
+
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.annotations.DataProvider;
 
-import java.lang.annotation.Annotation;
+import com.zebrunner.carina.dataprovider.core.DataProviderFactory;
 
 public interface IAbstractDataProvider {
 

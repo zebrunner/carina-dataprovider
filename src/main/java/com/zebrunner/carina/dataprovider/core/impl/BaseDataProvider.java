@@ -24,10 +24,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.zebrunner.carina.dataprovider.parser.DSBean;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 
+import com.zebrunner.carina.dataprovider.parser.DSBean;
 import com.zebrunner.carina.utils.ParameterGenerator;
 import com.zebrunner.carina.utils.parser.xls.AbstractTable;
 
@@ -36,6 +36,7 @@ import com.zebrunner.carina.utils.parser.xls.AbstractTable;
  */
 
 public abstract class BaseDataProvider {
+
     protected Map<String, String> tuidMap = Collections.synchronizedMap(new HashMap<>());
     protected Map<String, String> testColumnNamesMap = Collections.synchronizedMap(new HashMap<>());
 

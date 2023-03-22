@@ -27,6 +27,7 @@ import com.zebrunner.carina.utils.parser.xls.XLSParser;
 import com.zebrunner.carina.utils.parser.xls.XLSTable;
 
 public class CellLinksIntegrationTest {
+
     private List<String> headers;
     private List<String> firstRow;
     private List<String> secondRow;
