@@ -39,7 +39,7 @@ public @interface XlsDataSourceParameters {
     String spreadsheetId() default "";
 
     /**
-     * Define data provider instance
+     * Define sheet from xls file
      *
      * @return String
      */

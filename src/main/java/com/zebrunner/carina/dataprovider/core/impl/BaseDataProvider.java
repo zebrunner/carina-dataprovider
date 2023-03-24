@@ -139,7 +139,7 @@ public abstract class BaseDataProvider {
             // populate the rest of arguments by static parameters from testParams
             for (int staticArgsColumn = 0; staticArgsColumn < dsBean.getStaticArgs().size(); staticArgsColumn++) {
                 String staticArgName = dsBean.getStaticArgs().get(staticArgsColumn);
-                dataProvider[rowIndex][staticArgsColumn + row.entrySet().size()] = getStaticParam(staticArgName, dsBean);
+                dataProvider[rowIndex][staticArgsColumn + dsBean.getArgs().size()] = getStaticParam(staticArgName, dsBean);
             }
         }
     }
@@ -222,8 +222,11 @@ public abstract class BaseDataProvider {
     }
 
     protected static Object getStaticParam(String name, DSBean dsBean) {
-        //get value from suite by name
-        return ParameterGenerator.process(dsBean.getTestParams().get(name));
+        Object param = ParameterGenerator.process(dsBean.getTestParams().get(name));
+        if (param == null) {
+            throw new RuntimeException("Cant find parameter " + name + " in suite");
+        }
+        return param;
     }
 
     public Map<String, String> getTestColumnNamesMap() {
