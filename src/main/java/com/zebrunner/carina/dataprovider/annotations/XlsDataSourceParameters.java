@@ -28,7 +28,7 @@ public @interface XlsDataSourceParameters {
      *
      * @return String
      */
-    String className() default "com.qaprosoft.carina.core.foundation.dataprovider.core.impl.XlsDataProvider";
+    String className() default "com.zebrunner.carina.dataprovider.core.impl.XlsDataProvider";
 
     /**
      * Is mutually exclusive with path
@@ -38,7 +38,7 @@ public @interface XlsDataSourceParameters {
     String spreadsheetId() default "";
 
     /**
-     * Define data provider instance
+     * Define sheet from xls file
      *
      * @return String
      */

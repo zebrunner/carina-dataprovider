@@ -28,7 +28,7 @@ public @interface CsvDataSourceParameters {
      *
      * @return String
      */
-    String className() default "com.qaprosoft.carina.core.foundation.dataprovider.core.impl.CsvDataProvider";
+    String className() default "com.zebrunner.carina.dataprovider.core.impl.CsvDataProvider";
 
     /**
      * Define column separator for parsing
