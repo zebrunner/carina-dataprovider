@@ -15,24 +15,27 @@
  *******************************************************************************/
 package com.zebrunner.carina.dataprovider.parser;
 
+import com.zebrunner.carina.dataprovider.annotations.CsvDataSourceParameters;
+import com.zebrunner.carina.dataprovider.annotations.XlsDataSourceParameters;
+import com.zebrunner.carina.utils.commons.SpecialKeywords;
+import com.zebrunner.carina.utils.exception.InvalidArgsException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.ITestContext;
+
+import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.testng.ITestContext;
-
-import com.zebrunner.carina.dataprovider.annotations.CsvDataSourceParameters;
-import com.zebrunner.carina.dataprovider.annotations.XlsDataSourceParameters;
-import com.zebrunner.carina.utils.commons.SpecialKeywords;
-import com.zebrunner.carina.utils.exception.InvalidArgsException;
-
 public class DSBean {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private Map<String, String> testParams;
     private List<String> args = new ArrayList<>();
     private List<String> uidArgs = new ArrayList<>();
     private List<String> staticArgs = new ArrayList<>();
+
     private String dsFile;
     private String xlsSheet;
     private String executeColumn;
@@ -42,8 +45,26 @@ public class DSBean {
     private String testMethodColumn;
     private boolean argsToMap;
 
+    /**
+     * @deprecated test method should have {@link com.zebrunner.carina.dataprovider.annotations.CsvDataSourceParameters}
+     * or {@link com.zebrunner.carina.dataprovider.annotations.XlsDataSourceParameters} annotation
+     */
+    @Deprecated(forRemoval = true, since = "1.0.0")
     public DSBean(ITestContext context) {
-        initParamsFromSuite(context.getCurrentXmlTest().getAllParameters(), "excel");
+        this.testParams = context.getCurrentXmlTest().getAllParameters();
+        ////Delete this if/else after removal of SpecialKeywords.EXCEL_DS_... keys
+        if (testParams.keySet().stream().anyMatch(param -> param.contains("excel_ds_")
+                && !param.equalsIgnoreCase(SpecialKeywords.EXCEL_DS_SHEET))){
+
+            LOGGER.warn("Found usage of deprecated {excel_ds_...} suite parameters," +
+                    " implement new approach without \"excel\" word {ds_...}");
+
+            initParamsFromSuite(testParams, "excel");
+        } else {
+            initParamsFromSuite(testParams, "");
+        }
+
+        this.xlsSheet = testParams.get(SpecialKeywords.EXCEL_DS_SHEET);
         this.argsToMap = this.args.size() == 0;
     }
 
@@ -51,13 +72,18 @@ public class DSBean {
         // params initialize order: 1) from test annotation 2) from suite
         if (xlsDataSourceParameters != null) {
             this.initParamsFromAnnotation(xlsDataSourceParameters);
-            if (!xlsDataSourceParameters.sheet().isEmpty()) {
-                xlsSheet = xlsDataSourceParameters.sheet();
-            }
         }
 
         if (!suiteParams.isEmpty()) {
-            initParamsFromSuite(suiteParams, "excel");
+            if (suiteParams.keySet().stream().anyMatch(param -> param.contains("excel_ds_")
+                    && !param.equalsIgnoreCase(SpecialKeywords.EXCEL_DS_SHEET))){
+                LOGGER.warn("Found usage of deprecated {excel_ds_...} suite parameters," +
+                        " implement new approach without \"excel\" word {ds_...}");
+
+                initParamsFromSuite(suiteParams, "excel");
+            } else {
+                initParamsFromSuite(suiteParams, "");
+            }
             if (suiteParams.get(SpecialKeywords.EXCEL_DS_SHEET) != null) {
                 this.xlsSheet = suiteParams.get(SpecialKeywords.EXCEL_DS_SHEET);
             }
@@ -97,6 +123,7 @@ public class DSBean {
         this.executeValue = parameters.executeValue();
         this.groupColumn = parameters.groupColumn();
         this.testMethodColumn = parameters.testMethodColumn();
+        this.xlsSheet = parameters.sheet();
 
         if (!parameters.dsArgs().isEmpty()) {
             this.args = Arrays.asList(parameters.dsArgs().replace(" ", "").split(","));
@@ -107,11 +134,10 @@ public class DSBean {
         if (!parameters.staticArgs().isEmpty()) {
             this.staticArgs = Arrays.asList(parameters.staticArgs().replace(" ", "").split(","));
         }
-
     }
 
     private void initParamsFromAnnotation(CsvDataSourceParameters parameters) {
-        // initialize default xls data source parameters from annotation
+        // initialize default csv data source parameters from annotation
         this.dsFile = parameters.path();
         this.executeColumn = parameters.executeColumn();
         this.executeValue = parameters.executeValue();
@@ -129,6 +155,7 @@ public class DSBean {
         }
     }
 
+    //Delete specialKeyPrefix parameter after removal of SpecialKeywords.EXCEL_DS_... keys
     private void initParamsFromSuite(Map<String, String> suiteParams, String specialKeyPrefix) {
         // initialize data source parameters from suite xml file
         if (suiteParams.get(insert(SpecialKeywords.DS_FILE, specialKeyPrefix)) != null) {
@@ -151,6 +178,7 @@ public class DSBean {
         }
     }
 
+    //Delete this method after removal of SpecialKeywords.EXCEL_DS_... keys
     private String insert(String into, String insertion) {
         StringBuilder newString = new StringBuilder(into);
         newString.insert(1, insertion);
