@@ -13,14 +13,12 @@ public interface IAbstractDataProvider {
     @DataProvider(name = "DataProvider", parallel = true)
     default Object[][] createData(final ITestNGMethod testMethod, ITestContext context) {
         Annotation[] annotations = testMethod.getConstructorOrMethod().getMethod().getDeclaredAnnotations();
-        Object[][] objects = DataProviderFactory.getDataProvider(annotations, context, testMethod);
-        return objects;
+        return DataProviderFactory.getDataProvider(annotations, context, testMethod);
     }
 
     @DataProvider(name = "SingleDataProvider")
     default Object[][] createDataSingleThread(final ITestNGMethod testMethod, ITestContext context) {
         Annotation[] annotations = testMethod.getConstructorOrMethod().getMethod().getDeclaredAnnotations();
-        Object[][] objects = DataProviderFactory.getDataProvider(annotations, context, testMethod);
-        return objects;
+        return DataProviderFactory.getDataProvider(annotations, context, testMethod);
     }
 }

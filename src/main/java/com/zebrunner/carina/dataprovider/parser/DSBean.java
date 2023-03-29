@@ -65,7 +65,7 @@ public class DSBean {
         }
 
         this.xlsSheet = testParams.get(SpecialKeywords.EXCEL_DS_SHEET);
-        this.argsToMap = this.args.size() == 0;
+        this.argsToMap = this.args.isEmpty();
     }
 
     public DSBean(XlsDataSourceParameters xlsDataSourceParameters, Map<String, String> suiteParams) {
@@ -99,7 +99,7 @@ public class DSBean {
         }
 
         this.testParams = suiteParams;
-        this.argsToMap = this.args.size() == 0;
+        this.argsToMap = this.args.isEmpty();
     }
 
     public DSBean(CsvDataSourceParameters csvDataSourceParameters, Map<String, String> suiteParams) {
@@ -113,7 +113,7 @@ public class DSBean {
         }
         this.testParams = suiteParams;
         this.xlsSheet = null;
-        this.argsToMap = this.args.size() == 0;
+        this.argsToMap = this.args.isEmpty();
     }
 
     private void initParamsFromAnnotation(XlsDataSourceParameters parameters) {
