@@ -15,14 +15,23 @@
  *******************************************************************************/
 package com.zebrunner.carina.dataprovider.core.groupping;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Patotsky on 29.12.2014.
+ *
+ * @deprecated unused
  */
-
 @Deprecated(forRemoval = true, since = "1.0.0")
 public class GroupByImpl {
+
+    private GroupByImpl() {
+        // hide
+    }
 
     public static Object[][] getGroupedDataProviderArgs(Object[][] objects, int fieldNumber) {
         //add unique group values

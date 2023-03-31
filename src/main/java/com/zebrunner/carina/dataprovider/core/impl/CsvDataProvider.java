@@ -19,13 +19,10 @@ import com.zebrunner.carina.dataprovider.annotations.CsvDataSourceParameters;
 import com.zebrunner.carina.dataprovider.parser.DSBean;
 import com.zebrunner.carina.dataprovider.parser.csv.CSVParser;
 import com.zebrunner.carina.dataprovider.parser.csv.CSVTable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 
 import java.lang.annotation.Annotation;
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +30,6 @@ import java.util.Map;
  * Created by Patotsky on 16.12.2014.
  */
 public class CsvDataProvider extends BaseDataProvider {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     /**
      * Create data provider for test based on csv data source, suite and annotation parameters

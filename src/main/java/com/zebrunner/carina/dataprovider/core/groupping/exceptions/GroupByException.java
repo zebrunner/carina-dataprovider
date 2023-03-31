@@ -17,8 +17,9 @@ package com.zebrunner.carina.dataprovider.core.groupping.exceptions;
 
 /**
  * Created by Patotsky on 08.01.2015.
+ *
+ * @deprecated unused
  */
-
 @Deprecated(forRemoval = true, since = "1.0.0")
 @SuppressWarnings("serial")
 public class GroupByException extends RuntimeException {

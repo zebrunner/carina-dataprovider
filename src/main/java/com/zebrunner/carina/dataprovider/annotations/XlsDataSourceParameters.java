@@ -23,12 +23,13 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface XlsDataSourceParameters {
+
     /**
      * Define data provider instance
      *
      * @return String
      */
-    String className() default "com.qaprosoft.carina.core.foundation.dataprovider.core.impl.XlsDataProvider";
+    String className() default "com.zebrunner.carina.dataprovider.core.impl.XlsDataProvider";
 
     /**
      * Is mutually exclusive with path
@@ -38,7 +39,7 @@ public @interface XlsDataSourceParameters {
     String spreadsheetId() default "";
 
     /**
-     * Define data provider instance
+     * Define sheet from xls file
      *
      * @return String
      */
@@ -108,7 +109,7 @@ public @interface XlsDataSourceParameters {
     String testMethodColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
@@ -116,7 +117,7 @@ public @interface XlsDataSourceParameters {
     String testRailColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
@@ -124,7 +125,7 @@ public @interface XlsDataSourceParameters {
     String qTestColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
@@ -132,7 +133,7 @@ public @interface XlsDataSourceParameters {
     String testMethodOwnerColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
@@ -140,7 +141,7 @@ public @interface XlsDataSourceParameters {
     String bugColumn() default "";
 
     /**
-     * Reason: not implemented
+     * @deprecated Reason: not implemented
      *
      * @return String
      */
