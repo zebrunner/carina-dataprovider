@@ -43,8 +43,8 @@ public class CSVParser {
             String csvFile = ClassLoader.getSystemResource(dsBean.getDsFile()).getFile();
             try (FileReader fileReader = new FileReader(csvFile)) {
                 reader = new CSVReader(fileReader, separator, quote);
+                list = reader.readAll();
             }
-            list = reader.readAll();
         } catch (IOException e) {
             LOGGER.error("Unable to read data from CSV DataProvider", e);
         } finally {
