@@ -15,6 +15,12 @@
  *******************************************************************************/
 package com.zebrunner.carina.dataprovider.core.impl;
 
+import com.zebrunner.carina.dataprovider.DataProviderParameterGenerator;
+import com.zebrunner.carina.dataprovider.parser.DSBean;
+import com.zebrunner.carina.utils.parser.xls.AbstractTable;
+import org.testng.ITestContext;
+import org.testng.ITestNGMethod;
+
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,13 +29,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import org.testng.ITestContext;
-import org.testng.ITestNGMethod;
-
-import com.zebrunner.carina.dataprovider.parser.DSBean;
-import com.zebrunner.carina.utils.ParameterGenerator;
-import com.zebrunner.carina.utils.parser.xls.AbstractTable;
 
 /**
  * Created by Patotsky on 19.12.2014.
@@ -162,7 +161,7 @@ public abstract class BaseDataProvider {
         for (int rowIndex = 0; rowIndex < dataProvider.length; rowIndex++) {
             Map<String, String> row = table.getDataRows().get(rowIndex);
 
-            String rowHash = ParameterGenerator.hash(dataProvider[rowIndex], testNGMethod);
+            String rowHash = DataProviderParameterGenerator.hash(dataProvider[rowIndex], testNGMethod);
             addValueToMap(tuidMap, rowHash, getValueFromRow(row, dsBean.getUidArgs()));
             addValueToMap(testColumnNamesMap, rowHash, getValueFromRow(row, List.of(dsBean.getTestMethodColumn())));
         }
@@ -174,7 +173,7 @@ public abstract class BaseDataProvider {
                                                            ITestNGMethod testNGMethod) {
         for (int rowIndex = 0; rowIndex < dataProvider.length; rowIndex++) {
 
-            String rowHash = ParameterGenerator.hash(dataProvider[rowIndex], testNGMethod);
+            String rowHash = DataProviderParameterGenerator.hash(dataProvider[rowIndex], testNGMethod);
 
             //get all unique tuid values from certain group
             String testUid = getValueFromGroupList(rowIndex, groupedList, dsBean.getUidArgs());
@@ -222,7 +221,7 @@ public abstract class BaseDataProvider {
     }
 
     protected static Object getStaticParam(String name, DSBean dsBean) {
-        Object param = ParameterGenerator.process(dsBean.getTestParams().get(name));
+        Object param = DataProviderParameterGenerator.process(dsBean.getTestParams().get(name));
         if (param == null) {
             throw new RuntimeException("Cant find parameter " + name + " in suite");
         }
