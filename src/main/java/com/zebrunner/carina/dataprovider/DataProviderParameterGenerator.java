@@ -44,7 +44,6 @@ public class DataProviderParameterGenerator {
     private static final Pattern GENERATEN_PATTERN = Pattern.compile(SpecialKeywords.GENERATEN);
     private static final Pattern TESTDATA_PATTERN = Pattern.compile(SpecialKeywords.TESTDATA);
     private static final Pattern ENV_PATTERN = Pattern.compile(SpecialKeywords.ENV);
-    private static final Pattern L10N_PATTERN = Pattern.compile(SpecialKeywords.L10N_PATTERN);
     private static final Pattern EXCEL_PATTERN = Pattern.compile(SpecialKeywords.EXCEL);
     private static String uuid;
 
