@@ -23,7 +23,6 @@ import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.config.StandardConfigurationOption;
 import com.zebrunner.carina.utils.exception.InvalidArgsException;
 import com.zebrunner.carina.utils.parser.xls.XLSParser;
-import com.zebrunner.carina.utils.resources.L10N;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -109,19 +108,6 @@ public class DataProviderParameterGenerator {
                 int end = param.indexOf('}');
                 String key = param.substring(start, end);
                 return StringUtils.replace(param, matcher.group(), getValueFromXLS(key));
-            }
-
-            matcher = L10N_PATTERN.matcher(param);
-            String initStrL10N = param;
-            while (matcher.find()) {
-                int start = param.indexOf(SpecialKeywords.L10N + ":") + 5;
-                int end = param.indexOf('}');
-                String key = param.substring(start, end);
-                param = StringUtils.replace(param, matcher.group(), L10N.getText(key));
-            }
-            // in case if L10N pattern was applied
-            if (!initStrL10N.equalsIgnoreCase(param)) {
-                return param;
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
