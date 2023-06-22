@@ -51,6 +51,7 @@
         <java.version>11</java.version>
         <carina-utils.version>1.0.5.REFACTORING-SNAPSHOT</carina-utils.version>
         <opencsv.version>1.7</opencsv.version>
+        <apache-poi.version>4.1.2</apache-poi.version>
         <slf4j.version>1.7.30</slf4j.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <testng.version>7.7.1</testng.version>
@@ -114,6 +115,13 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${apache-poi.version}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.testng</groupId>
