@@ -46,7 +46,8 @@ public class XlsDataProvider extends BaseDataProvider {
         DSBean dsBean = new DSBean(parameters, context.getCurrentXmlTest().getAllParameters());
 
         XLSTable xlsTable = XLSParser.parseSpreadSheet(dsBean.getDsFile(), dsBean.getXlsSheet(), dsBean.getExecuteColumn(), dsBean.getExecuteValue());
-        xlsTable.processTable();
+        //todo investigate how it will work without this method
+      //  xlsTable.processTable();
 
         String groupColumn = dsBean.getGroupColumn();
         if (groupColumn.isEmpty()) {

@@ -49,10 +49,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
-        <carina-utils.version>1.0.4</carina-utils.version>
+        <carina-utils.version>1.0.5.REFACTORING-SNAPSHOT</carina-utils.version>
         <opencsv.version>1.7</opencsv.version>
+        <apache-poi.version>4.1.2</apache-poi.version>
         <slf4j.version>1.7.30</slf4j.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
         <testng.version>7.7.1</testng.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
@@ -90,10 +90,6 @@
                     <groupId>org.seleniumhq.selenium</groupId>
                     <artifactId>*</artifactId>
                 </exclusion>
-                <exclusion>
-                    <groupId>io.rest-assured</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
             </exclusions>
         </dependency>
 
@@ -110,10 +106,11 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${apache-poi.version}</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.testng</groupId>
