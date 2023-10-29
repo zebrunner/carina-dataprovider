@@ -15,7 +15,7 @@
  *******************************************************************************/
 package com.zebrunner.carina.utils.parser.xls;
 
-import com.zebrunner.carina.utils.exception.DataLoadingException;
+import com.zebrunner.carina.dataprovider.DataLoadingException;
 import com.zebrunner.carina.utils.exception.InvalidArgsException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
